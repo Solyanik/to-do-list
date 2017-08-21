@@ -1,0 +1,94 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+ head:
+  title: 'To do list'
+ header:
+  logo: 'TODO'
+  menu:
+   title_archive: 'Archive'
+   title_destroy_user_session: 'Sign out (%{email})'
+   title_login: 'Sign in'
+   title_registration: 'Registration'
+ sidebar:
+  filter:
+   link:
+    title:
+     taday:
+      name: 'Today'
+     next7days:
+      name: 'Next 7 days'
+  list_projects:
+   title:
+    name: 'Projects'
+ common:
+  projects:
+   index:
+    title: 'Listing Projects'
+   destroy:
+    text_true: 'Project and Tasks was successfully destroyed.'
+    text_false: 'I can not delete a project, because the project has uncompleted tasks!'
+  tasks:
+   today:
+    title: 'Today'
+   next_seven_days:
+    title: 'Next 7 days'
+   archive:
+    title: 'Archive'
+   done:
+    text_true: 'You marked the task as done!'
+    text_false: 'You marked the task as no done!'
+   destroy:
+    text_true: 'Task was successfully destroyed.'
+  errors: 'Errors'
+  success:
+    link_refresh: 'Refresh!'
+  message:
+   confirm:
+    delete: 'Are you sure?'
+   no_results:
+    text: 'No tasks!'
+   no_results_projects:
+    text: 'No projects!'
+   task:
+    no_deadline:
+     title: 'The deadline for completing the task is not specified!'
+  form:
+   project:
+    name: 'Name project'
+   task:
+    name: 'Name task'
+    deadline: 'MM/DD/YYYY'
+   priority:
+    tall: 'High'
+    average: 'Average'
+    low: 'Low'
+   button:
+    submit:
+     update: 'Update'
+     add: 'Add'
+    cancel:
+     name: 'Cancel'
+    add_project:
+     name: '+ Add project'
+    add_task:
+     name: '+ add task'

@@ -1,0 +1,24 @@
+.row
+  .col-md-10
+    .col-priority.d-inline-block
+      = task_priority(task.priority)
+    .name.d-inline-block
+      = task.name
+    .deadline.blockquote-footer.small
+      = task.deadline ? task.deadline.to_formatted_s(:long_ordinal).gsub('00:00', '') : "#{ t 'common.message.task.no_deadline.title' }"
+  .col-md-2
+    - if col_project_visibility
+      .col-project.d-inline-block
+        - if task.project
+          = task.project
+          = project_flag(task.project.flag)
+    
+    span.float-right.menu-control
+      i.material-icons.align-middle.dropdown-toggle[data-toggle="dropdown"] more_vert
+      .dropdown-menu.text-center
+        = link_to 'edit', '#edit', class: 'material-icons align-middle', 'ng-click' => "open_edit_task(#{ task.id })"
+        - if task.status == false
+          = link_to 'done', "/tasks/done/#{ task.id }", class: 'material-icons align-middle'
+        - else
+          = link_to 'assignment_return', "/tasks/done_return/#{ task.id }", class: 'material-icons align-middle'
+        = link_to 'delete_forever', task, method: :delete, data: { confirm: "#{ t 'common.message.confirm.delete' }" }, class: 'material-icons align-middle'

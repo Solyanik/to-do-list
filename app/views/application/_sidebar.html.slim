@@ -1,0 +1,34 @@
+.filter
+	ul
+		li
+			a[href="#{ today_tasks_path }"]
+				= t 'sidebar.filter.link.title.taday.name'
+				quantity
+					= @quantity_today
+		li
+			= link_to t('sidebar.filter.link.title.next7days.name'), next_seven_days_tasks_path
+
+.block-list-projects
+	.blp-title
+		= link_to t('sidebar.list_projects.title.name'), projects_path
+
+	ul
+		- if !@projects.any?
+		    p
+				= t 'common.message.no_results_projects.text'
+
+		- @projects.each do |project|
+			li.clearfix
+				= project_flag(project.flag)
+				= link_to project.name, project, class: "#{ project == @project ? 'active' : '' }"
+				quantity
+					= project.quantity
+				span.float-right.menu-control
+					i.material-icons.align-middle.dropdown-toggle[data-toggle="dropdown"] more_vert
+					.dropdown-menu.text-center
+						= link_to 'mode_edit', '#edit', class: 'material-icons align-middle', 'ng-click' => "open_edit_project(#{ project.id })"
+						= link_to 'delete_forever', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'material-icons align-middle'
+		
+		= render 'form_project'
+
+	= link_to t('common.form.button.add_project.name'), '', id: 'add-project-btn', class: 'btn', 'ng-click' => 'open_add_project()', 'ng-hide' => 'form_project'

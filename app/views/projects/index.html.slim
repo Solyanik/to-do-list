@@ -1,0 +1,23 @@
+h1
+  = t 'common.projects.index.title'
+
+.listing-projects-and-tasks
+  - if !@projects.any?
+    p
+      = t 'common.message.no_results_projects.text'
+      
+  - @projects.each do |project|
+
+    h2
+      = link_to project.name, project
+      = project_flag(project.flag)
+    section.container.list_tasks
+      - if !project.tasks.any?
+        .alert.alert-secondary.row[role="alert"]
+          = t 'common.message.no_results.text'
+
+      - project.tasks.each do |task|
+        = render 'task', col_project_visibility: false, task: task
+
+  section.container.list_tasks
+    = render 'form_task'

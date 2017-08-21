@@ -1,0 +1,54 @@
+#form-task.clearfix.form-task[ng-show="form_task" ng-init="project_id = #{ @project ? @project.id : 0 }"]
+  #message.row
+    .alert.alert-success[ng-if="successMessageTask"]
+      | {{ successMessageTask }}
+      = link_to t('common.success.link_refresh'), request.url, class: 'd-block'
+    .alert.alert-danger[ng-if="errorMessagesTask"]
+      h5
+        = t 'common.errors'
+        
+      ul
+        li[data-ng-repeat="(key, message) in errorMessagesTask"]
+          | {{ key }}: 
+          | {{ message[0] }}
+
+
+  .form-row.row
+    .form-group.col-md-10
+      input.form-control[placeholder="#{ t 'common.form.task.name' }" name="task[name]" type="text" ng-value="task.name"]
+    .form-group.col-md-2
+      input.form-control[placeholder="#{ t 'common.form.task.deadline' }" name="task[deadline]" type="text" data-provide='datepicker' ng-value="task.deadline"]
+  .form-row.row
+    .form-group.col-md-11
+      button.btn-primary[type="button" ng-click="submit_task()"] {{ task.id ? '#{ t 'common.form.button.submit.update' }' : '#{ t 'common.form.button.submit.add' }' }}
+      button.btn-link[type="button" ng-click="form_task = false"]
+        = t 'common.form.button.cancel.name'
+    .form-group.col-md-1.text-right
+      .select-projects.d-inline-block
+        i.material-icons.dropdown-toggle[data-toggle="dropdown"] insert_emoticon
+        .dropdown-menu
+          - @projects.each do |project|
+            .form-check
+              label.form-check-label
+                input.form-check-input[ng-checked="task.project_id ? task.project_id == '#{ project.id }' : project_id == '#{ project.id }'" name="task[project]" type="radio" value="#{ project.id }"]
+                = project.name      
+      .select-priority.d-inline-block
+        i.material-icons.dropdown-toggle[data-toggle="dropdown"] flash_on
+        .dropdown-menu
+          .form-check
+            label.form-check-label
+              input.form-check-input[ng-checked="task.priority == '1'" name="task[priority]" type="radio" value="1"]
+              = t 'common.form.priority.tall'
+              i.d-inline-block.priority-tall
+          .form-check
+            label.form-check-label
+              input.form-check-input[ng-checked="task.priority == '2'" name="task[priority]" type="radio" value="2"]
+              = t 'common.form.priority.average'
+              i.d-inline-block.priority-average
+          .form-check
+            label.form-check-label
+              input.form-check-input[ng-checked="task.priority == '3' || !task.priority" name="task[priority]" type="radio" value="3"]
+              = t 'common.form.priority.low'
+              i.d-inline-block.priority-low
+
+= link_to t('common.form.button.add_task.name'), '#add-task', id: 'add-task-btn', class: 'btn', 'ng-click' => 'open_add_task()', 'ng-hide' => 'form_task'

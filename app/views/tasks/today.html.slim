@@ -1,0 +1,6 @@
+h1
+	= t 'common.tasks.today.title'
+	span 
+  		= Date.today.to_formatted_s(:long_ordinal)
+
+= render 'list_tasks', col_project_visibility: true

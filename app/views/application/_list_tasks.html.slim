@@ -1,0 +1,9 @@
+- if !@tasks.any?
+    .alert.alert-secondary[role="alert"]
+      = t 'common.message.no_results.text'
+
+section.container.list_tasks
+  - @tasks.each do |task|
+    = render 'task', col_project_visibility: col_project_visibility, task: task
+
+  = render 'form_task'
