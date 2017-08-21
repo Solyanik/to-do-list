@@ -5,7 +5,6 @@ angular.module('app', []).controller 'main', ['$scope', '$http', ($scope, $http)
 	$scope.form_task = false
 	$scope.form_project = false
 	id_form_name = "#form-task"
-	$('#form-project, #form-task').removeClass('ng-hide')
 
 	# Projects
 	$scope.open_add_project = () ->
