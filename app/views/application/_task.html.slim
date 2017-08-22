@@ -1,11 +1,16 @@
-.row
+.row[class="#{task.deadline_expired ? 'deadline_expired' : ''}"]
   .col-md-10
     .col-priority.d-inline-block
       = task_priority(task.priority)
     .name.d-inline-block
       = task.name
     .deadline.blockquote-footer.small
-      = task.deadline ? task.deadline.to_formatted_s(:long_ordinal).gsub('00:00', '') : "#{ t 'common.message.task.no_deadline.title' }"
+      - if task.deadline
+        = t 'common.tasks.deadline.name'
+        = task.deadline.to_formatted_s(:long_ordinal).gsub('00:00', '')
+      - else
+        = t 'common.message.task.no_deadline.title'
+
   .col-md-2
     - if col_project_visibility
       .col-project.d-inline-block

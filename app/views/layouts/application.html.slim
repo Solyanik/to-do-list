@@ -13,9 +13,9 @@ html
 		.container-fluid.bd-container-header
 			.container
 				.row					
-					.logo.col-md-8
+					.logo.col-sm-2
 						= link_to t('header.logo'), root_path
-					.col-md-4.header-menu
+					.col-sm-10.header-menu
 						- if user_signed_in?
 							a.d-inline-block[href="#{ archive_tasks_path }"]
 								i.material-icons reorder

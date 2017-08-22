@@ -1,12 +1,12 @@
 .filter
 	ul
 		li
-			a[href="#{ today_tasks_path }"]
-				= t 'sidebar.filter.link.title.taday.name'
+			a[href="#{ today_tasks_path }" class="#{ request.url.index(today_tasks_path) ? 'active' : '' }"]
+				= t 'sidebar.filter.link.title.today.name'
 				quantity
 					= @quantity_today
 		li
-			= link_to t('sidebar.filter.link.title.next7days.name'), next_seven_days_tasks_path
+			= link_to t('sidebar.filter.link.title.next7days.name'), next_seven_days_tasks_path,  class: "#{ request.url.index(next_seven_days_tasks_path) ? 'active' : '' }"
 
 .block-list-projects
 	.blp-title

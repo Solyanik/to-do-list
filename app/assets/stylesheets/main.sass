@@ -65,6 +65,8 @@ body
 			.list_tasks
 				.alert-secondary.row
 					border-bottom: none
+				.row.deadline_expired
+					background: rgba(255, 0, 0, 0.06)
 				.row
 					line-height: 35px
 					border-bottom: 1px solid #999999
@@ -85,14 +87,16 @@ body
 					.priority-tall
 						background: red
 					.col-project
+						margin-top: 10px
 						i
 							border-radius: 8px
 							width: 8px
 							height: 8px
 							margin: 0px 5px 1px 10px
 					span.menu-control
+						margin-top: 10px
 						.dropdown-menu
-							top: 32px
+							top: 42px
 							margin-left: 76px
 				.row:hover
 					span.menu-control
@@ -203,6 +207,9 @@ body
 					position: relative
 			.filter
 				margin-bottom: 20px
+				a.active
+					color: #005196
+					text-decoration: underline
 			.block-list-projects
 				.blp-title
 					font-size: 18px

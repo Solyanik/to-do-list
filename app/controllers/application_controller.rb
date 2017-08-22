@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   private
     def status_task
-    	Task.where("deadline < :nowtime and status = :status", :nowtime => DateTime.now, :status => false).update_all(:priority => 1)
+    	Task.where("deadline < :nowtime and status = :status", :nowtime => DateTime.now, :status => false).update_all(:deadline_expired => true)
     end
 
 end
